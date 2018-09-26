@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>ToDoList</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="inputValue">
+        <button v-on:click="clickOnBtn">提交</button>
+        <ul>
+            <li v-for="(item, index) in list">{{item}}</li>
+        </ul>
+    </div>
+    
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                inputValue: '',
+                list: []
+            },
+            methods: {
+                clickOnBtn: function () {
+                    if (this.inputValue != '') {
+                        this.list.push(this.inputValue),
+                        this.inputValue = ''
+                    } else {
+                        alert('输入为空！')
+                    }
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>
