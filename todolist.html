@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,24 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="./vue.js"></script>
 </head>
+
 <body>
     <div id="app">
         <input type="text" v-model="inputValue">
         <button v-on:click="clickOnBtn">提交</button>
         <ul>
-            <todo-item v-for="(item, index) in list" 
-                       v-bind:content="item"
-                       v-bind:index="index"
-                       @delete="ItemDelete">
-            </todo-item> 
+            <todo-item v-for="(item, index) in list" v-bind:content="item" v-bind:index="index" @delete="ItemDelete">
+            </todo-item>
         </ul>
     </div>
-    
+
     <script>
         var TodoItem = {
             props: ['content', 'index'],
             methods: {
-                clickOnItem: function(){
+                clickOnItem: function () {
                     this.$emit("delete", this.index)
                 }
             },
@@ -44,17 +43,18 @@
                 clickOnBtn: function () {
                     if (this.inputValue != '') {
                         this.list.push(this.inputValue),
-                        this.inputValue = ''
+                            this.inputValue = ''
                     } else {
                         alert('输入为空！')
-                    }  
+                    }
                 },
                 ItemDelete: function (index) {
                     this.list.splice(index, 1)
                 }
             }
         })
-        
+
     </script>
 </body>
+
 </html>
